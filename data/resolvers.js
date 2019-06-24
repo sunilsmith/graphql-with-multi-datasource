@@ -13,11 +13,12 @@ const resolvers = {
       return Author.findAll({})
             .then((author) => author);
     },
-    comment() {
+    /* allComments() {
       console.log('****** Comments ********')
+      //console.log(Comment);
       return Comment.findAll({})
              .then((comment) => comment);
-    }
+    } */
   },
   Author: {
     posts(author){
@@ -43,15 +44,19 @@ const resolvers = {
       return View.findOne({ postId: post.id })
              .then((view) => view.views);
     },
-    
+    comments(post) {
+      return Comment.findOne({ postId: post.id })
+              .then((comment) => comment.comments)
+    }
   },
-  Comment: {
-    comment() {
+  /* Comment: {
+    comment(args) {
       console.log('****** Comments ********')
+      console.log(args);
       return Comment.findAll({})
              .then((comment) => comment);
     }
-  }
+  } */
 };
 
 export default resolvers;

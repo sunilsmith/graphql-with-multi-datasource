@@ -1,15 +1,11 @@
-# apollo-tutorial-kit
+# apollo-tutorial-with-multi-datasource-and-schema-stitching
 
 Starting point for the Apollo GraphQL Server tutorial.
-
-Follow along with the tutorial in the blog post: [How to build a GraphQL server](https://medium.com/apollo-stack/tutorial-building-a-graphql-server-cddaa023c035#.wy5h1htxs). If you want to skip ahead to the solution, check out the [server-tutorial-solution](https://github.com/apollographql/apollo-tutorial-kit/tree/server-tutorial-solution) branch of this repo.
-
-Up-to-date documentation and explanations can be found in the [Apollo Server docs](https://www.apollographql.com/docs/apollo-server/)
 
 ## Getting started
 
 ```bash
-git clone https://github.com/apollostack/apollo-starter-kit
+git clone https://github.com/sunilsmith/graphql-with-multi-datasource.git
 cd apollo-starter-kit
 npm install
 npm start
@@ -34,3 +30,11 @@ and hit the play button (cmd-return), then you should get this on the right side
   }
 }
 ```
+But this GIT Project is incompleted as i am facing issues with schema stitching
+I have 2 different schema's in data/schema.js, authorSchema and commentSchema
+
+Lets describe what i am tryin to achieve
+1. I have created 2 schemas with typedef's and Query
+2. The first schema authorSchema is defined and the query is resolved in the data/resolver.js file
+3. But the second schema commentSchema is defined and queried in data/schema but can't able to resolve in data/resolver.js
+4. To achieve: I need to create relation between both schema i.e with a query on author schema with comments array i need to get values for author, post, view(based on postId) and comments(based on postId which is in commentSchema)

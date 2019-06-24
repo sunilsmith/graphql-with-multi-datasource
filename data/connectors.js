@@ -65,19 +65,22 @@ db.sync({ force: true }).then(() => {
       })
       .then((post) => { // <- the new part starts here
         // create some View mocks
-        return View.update(
+        View.update(
           { postId: post.id },
           { views: casual.integer(0, 100) },
           { upsert: true });
-      })
-      .then((post) => {
-        console.log('********* Comments **************')
-        return Comment.update(
+
+          return Comment.update(
             { postId: post.id },
             { comments: casual.sentences(5) },
             { upsert: true }
             )
-        });
+      })
+      /* .then((post) => {
+        console.log('********* Comments **************')
+        console.log(post);
+        
+        }); */
     });
   });
 });

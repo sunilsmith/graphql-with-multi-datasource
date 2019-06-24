@@ -41,6 +41,7 @@ type Post {
   text: String
   views: Int
   author: Author
+  comments: String
 }
 
 type Query {
@@ -56,7 +57,6 @@ type Comment {
 }
 
 type Query {
-  comment: Comment
   allComments: [Comment]
 }
 ` });
