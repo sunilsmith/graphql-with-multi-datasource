@@ -45,8 +45,8 @@ const resolvers = {
              .then((view) => view.views);
     },
     comments(post) {
-      return Comment.findOne({ postId: post.id })
-              .then((comment) => comment.comments)
+      return Comment.find({postId: post.id},{comments:1, _id: 0})
+              .then((comment) => comment)
     }
   },
   /* Comment: {

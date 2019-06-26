@@ -27,6 +27,18 @@ type Query {
 
 // Add resolvers option to this call
 //const schema = makeExecutableSchema({ typeDefs, resolvers });
+
+const commentSchema = makeExecutableSchema({ typeDefs : `
+type Comment {
+  postId: Int
+  comments: String
+}
+
+type Query {
+  allComments: [Comment]
+}
+` });
+
 const authorSchema = makeExecutableSchema({ typeDefs : `
 type Author {
   id: Int
@@ -41,7 +53,7 @@ type Post {
   text: String
   views: Int
   author: Author
-  comments: String
+  comments: [String]
 }
 
 type Query {
@@ -50,16 +62,6 @@ type Query {
 }
 ` });
 
-const commentSchema = makeExecutableSchema({ typeDefs : `
-type Comment {
-  postId: Int
-  comments: String
-}
-
-type Query {
-  allComments: [Comment]
-}
-` });
 //const schema = makeExecutableSchema({ typeDefs });
 
 //addMockFunctionsToSchema({ schema, mocks });
